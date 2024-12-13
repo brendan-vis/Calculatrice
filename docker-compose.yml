@@ -1,0 +1,12 @@
+version: '3.1'
+
+services:
+  server:
+    image: meo
+    build: .
+    environment:
+      CALC_PORT: 4444
+    ports: 
+      - "4444:4444"
+    
+

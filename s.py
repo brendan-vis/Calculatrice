@@ -1,8 +1,17 @@
 import socket
+import os
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-s.bind(('10.33.73.98', 9999))  
+
+CALC_PORT = os.environ.get("CALC_PORT")
+try:
+    CALC_PORT = int(CALC_PORT)
+except (TypeError, ValueError):
+    raise ValueError("CALC_PORT doit etre un int")
+
+
+s.bind(('0.0.0.0', CALC_PORT))  
 
 s.listen(1)
 conn, addr = s.accept()

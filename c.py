@@ -1,7 +1,7 @@
 import socket
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect(('10.33.73.98', 9999))
+s.connect(('localhost', 4444))
 s.send('Hello'.encode())
 
 # On reçoit la string Hello
